@@ -46,7 +46,7 @@ Also able to calculate the differential between a treated(-i) and a control(-c) 
 
 
     Example: 
-      callMUT -i treated.mpileup -c untreated.mpileup -o treated.mprofile -ic 0.001
+      mprofile callMUT -i treated.mpileup -c untreated.mpileup -o treated.mprofile -ic 0.001
 
 <br>
 
@@ -112,7 +112,7 @@ Accepts either single-read(SR) or paired-end(PE) data, however PE is highly recc
 
 
     Example: 
-      TransloCapture -1 treated_R1.fastq -2 treated_R2.fastq -o treated_translomap.csv -p target_primers.csv
+      mprofile TransloCapture -1 treated_R1.fastq -2 treated_R2.fastq -o treated_translomap.csv -p target_primers.csv
       
       
        -h, --help            show this help message and exit
