@@ -73,6 +73,7 @@ chr1	|88992918	|C	|1480451	|0.003216938	|0.000509182	|0.028957037	|0	|0.00050918
 In the multiplex PCR used for targeted sequencing, crossover events (translocations) between the targets will also be sequenced. TransloCapture takes unprocessed fastq files and identifies reads that are crossover events. The tool works by identifying the primers used for amplification of the targets at either end of the reads.
 
 Requires a csv file(-p) containing three columns "target name", "forward primer sequence", "reverse primer sequence" for each target. The output is a .csv file containing a matrix of all possible crossovers and their frequencies (% of reads) and can also output the crossover reads to a new fastq file.
+NOTE: The feature of writing the translocated reads to a new fastq is not currently available.
 
 Similar to callMUT, it can also calculate the differential of the input to a control and can accept pre-generated output .csv files instead of fastq to generate these differentials seperately (-pp). 
 
