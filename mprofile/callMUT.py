@@ -109,9 +109,9 @@ def mutDIFF(ctrl_mprofile, treated_mprofile, cutoff=1):
     t_rate = float(treat_columns[5])-float(ctrl_columns[5])
     g_rate = float(treat_columns[6])-float(ctrl_columns[6])
     c_rate = float(treat_columns[7])-float(ctrl_columns[7])
-    transitions = float(treat_columns[9])-float(ctrl_columns[8])
-    transversions = float(treat_columns[10])-float(ctrl_columns[9])
-    snv_rate = float(treat_columns[8])-float(ctrl_columns[10])
+    transitions = float(treat_columns[8])-float(ctrl_columns[8])
+    transversions = float(treat_columns[9])-float(ctrl_columns[9])
+    snv_rate = float(treat_columns[10])-float(ctrl_columns[10])
     in_rate = float(treat_columns[11])-float(ctrl_columns[11])
     del_rate = float(treat_columns[12])-float(ctrl_columns[12])
     # for common indel sequences, first create a dictionary of the control indels (key=indel sequence, value=rate).
