@@ -24,7 +24,7 @@ Mprofiles are comparitively very lightweight and do not expand with increasing a
 Also able to calculate the differential between a treated(-i) and a control(-c) sample (either in mpileup or mprofile format).
 
 #### Arguments
-    callMUT -i <input> -o <output>
+    mprofile callMUT -i <input> -o <output>
     
     Required arguments:
       --input -i INPUT
@@ -80,7 +80,7 @@ Similar to callMUT, it can also calculate the differential of the input to a con
 Accepts either single-read(SR) or paired-end(PE) data, however PE is highly reccommended for this analysis! SR will significantly reduce the accruacy of the tool.
 
 #### Arguments
-    TransloCapture -1 <input_read1> -2 <input_read2> -o <output>
+    mprofile TransloCapture -1 <input_read1> -2 <input_read2> -o <output>
     
     Required arguments:
       --input -i INPUT
