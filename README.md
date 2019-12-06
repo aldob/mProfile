@@ -21,7 +21,7 @@ The default output of Samtools Mpileup is very large and cumbersome to parse, a 
 
 Mprofiles are comparitively very lightweight and do not expand with increasing alignment file size. They provide per-nucloetide mutation rates (% of reads) in a table that makes plotting and further analysis simple and fast! 
 
-Also able to calculate the differential between a treated(-i) and a control(-c) sample (either in mpileup or mprofile format).
+Also able to calculate the differential between a treated(-i) and a control(-c) sample (either in mpileup or mprofile format). NOTE: To calculate the differential the mpileups must be created using the argument -aa to ensure they all report the exact same coordinates.
 
 #### Arguments
     mprofile callMUT -i <input> -o <output>
