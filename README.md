@@ -1,4 +1,7 @@
 # mProfile
+## Installation
+    pip install mprofile-mut
+<br>
 ## Overview
 A package for processing targeted sequencing (amplicon) data for high-resolution mutation profiling. 
 
