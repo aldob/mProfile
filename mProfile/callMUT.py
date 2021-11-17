@@ -2,7 +2,7 @@
 from __future__ import division
 from argparse import ArgumentParser
 import sys
-import re
+from re import sub, findall, finditer
 from multiprocessing import Pool
 try:
     from itertools import izip as zip
@@ -72,7 +72,7 @@ def de_indel(argues):
     coordinate = columns[1]
     base = columns[2]
     readcount = int(columns[3])
-    reads = re.sub('\\^.', "", columns[4])
+    reads = sub('\\^.', "", columns[4])
     startlocations = list()
     endlocations = list()
     length_diff = 0
@@ -80,9 +80,9 @@ def de_indel(argues):
     # indels must first be extracted from the mpileup mutation calls, as it reports indel sequences which interferes with point mutation counting. 
     # use regex to find and extract the string of the indel number (findall) as well as the match object for the indel (finditer).
     if readcount>0:
-        indels = re.findall(r'\d+', reads)
+        indels = findall(r'\d+', reads)
         # use the match objects to create a list of locations for each match.
-        for match in re.finditer(r'\d+', reads):
+        for match in finditer(r'\d+', reads):
             startlocations.append(int(match.start()))
             endlocations.append(int(match.end()))
         # iterate over the list of indel strings and their locations simultaneously to remove the sequences and generate a new string containing just the indels (indel_sequences).
