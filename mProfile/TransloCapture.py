@@ -316,19 +316,20 @@ def TransloCapture(argues):
         regout2.close()
     # Normalise all counts to readcount of the canonical donor target
     samp_dict_norm = {}
-    for donor, acceptor in zip(primer_names, primer_names):
-        if donor != acceptor:
-            if readcounts[donor] + readcounts[acceptor] > 0:
-                fw_rate = samp_dict[donor+"-"+acceptor]
-                rv_rate = samp_dict[acceptor+"-"+donor]
-                samp_dict_norm[donor+"-"+acceptor] = (fw_rate/(readcounts[donor] + readcounts[acceptor]))*100
-                samp_dict_norm[acceptor+"-"+donor] = (rv_rate/(readcounts[donor] + readcounts[acceptor]))*100
+    for donor in primer_names:
+        for acceptor in primer_names:
+            if donor != acceptor:
+                if readcounts[donor] + readcounts[acceptor] > 0:
+                    fw_rate = samp_dict[donor+"-"+acceptor]
+                    rv_rate = samp_dict[acceptor+"-"+donor]
+                    total_rate = ((fw_rate+rv_rate)/(readcounts[donor] + readcounts[acceptor]))*100
+                    samp_dict_norm[donor+"-"+acceptor] = total_rate
+                    samp_dict_norm[acceptor+"-"+donor] = total_rate
+                else:
+                    samp_dict_norm[donor+"-"+acceptor] = 0
+                    samp_dict_norm[acceptor+"-"+donor] = 0
             else:
-                samp_dict_norm[donor+"-"+acceptor] = 0
-                samp_dict_norm[acceptor+"-"+donor] = 0
-        else:
-            samp_dict_norm[donor+"-"+acceptor] = "NA"
-            samp_dict_norm[acceptor+"-"+donor] = "NA"
+                samp_dict_norm[donor+"-"+acceptor] = "NA"
     return(samp_dict_norm)
 def dict_diff(ctrl_dict, treat_dict):
     diff_dict = {}
@@ -378,7 +379,7 @@ def main(args=argypargy()):
                             extra=""
                         else:
                             extra=","
-                        if numsafe(val1):
+                        if numsafe(val1) and numsafe(val2):
                             outputfile.write(str(float(val2)-float(val1))+extra)
                         else:
                             outputfile.write(val1.strip("\n")+extra)
