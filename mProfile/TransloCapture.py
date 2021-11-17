@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from __future__ import division
 from argparse import ArgumentParser
-from os import supports_dir_fd
 import sys
 from re import sub
 from multiprocessing import Pool
