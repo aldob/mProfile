@@ -2,13 +2,14 @@
 ## Installation
     pip install mprofile-mut
 <br>
-
 ## Overview
 A package for processing targeted sequencing (amplicon) data for high-resolution mutation profiling. 
 
 The callMUT tool converts mutation data from the Samtools mpileup format, which contains raw mutation calls for every read, into a lightweight, analysis ready mprofile: a table cotaining the percentage rate of every mutation type at every nucleotide. 
 
 The TransloCapture tool maps all possible crossover events between different targets in a targeted sequencing experiment. 
+
+The StructureMap tool maps structural variants in whole genome data using paired-end alignment files.
 
 
 
@@ -161,6 +162,51 @@ Target1|0|NA|0.01673|0.0002336|0.23451|
 Target2|0|0.010564|NA|0.01568|0.006168|
 Target3|0|0.000005169|0.000168168|NA|0.000079841|
 Target4|0|0.0016546|0.078965|0.0165169|NA|
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+## StructureMap
+By identifying the position of each mate in a read pair, StructureMap determines if this fragment has been translocated (different chromosomes), had a large deletion (insert size greater than threshold) or other variants.
+
+It requires a sorted alignment file that can be SAM, BAM or CRAM. 
+
+There is an option to output a file that contains all the insert sizes for every succesfully aligned read (excludes translocations etc).
+
+DEPENDENCY: pysam, unlike other mprofile tools StructureMap has a dependency on pysam to read the alignment files
+
+#### Arguments
+    StructureMap_v3.py [-h] [--input INPUT] [--output OUTPUT]
+                              [--insert_max [INSERT_MAX]]
+                              [--fragment_sizes FRAGMENT_SIZES]
+
+    StructureMap -i input.sam -o output.sprofile
+
+    optional arguments:
+      -h, --help            show this help message and exit
+
+    Required arguments:
+      --input INPUT, -i INPUT
+                            Input alignment file of SAM/BAM/CRAM format MUST be
+                            paired end and sorted
+      --output OUTPUT, -o OUTPUT
+                            Output structure profile, referred to as .sprofile
+                            files, is a tab delimited table.
+
+    Additional arguments:
+      --insert_max [INSERT_MAX], -im [INSERT_MAX]
+                            Maximum size of input DNA fragments, over which
+                            deletions are annotated, default=2000
+      --fragment_sizes FRAGMENT_SIZES, -fs FRAGMENT_SIZES
+                            Optional output file for the fragment size of
+                            correctly mapped reads
 
 
 
