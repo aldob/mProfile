@@ -184,7 +184,7 @@ There is an option to output a file that contains all the insert sizes for every
 DEPENDENCY: pysam, unlike other mprofile tools StructureMap has a dependency on pysam to read the alignment files
 
 #### Arguments
-    StructureMap_v3.py [-h] [--input INPUT] [--output OUTPUT]
+    StructureMap.py [-h] [--input INPUT] [--output OUTPUT]
                               [--insert_max [INSERT_MAX]]
                               [--fragment_sizes FRAGMENT_SIZES]
 
